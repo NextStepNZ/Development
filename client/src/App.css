@@ -1,0 +1,36 @@
+.App {
+  text-align: center;;
+}
+
+/*
+Just made the whole page grey so my eyes dont hurt at 3am - Salman
+*/
+html {
+  background-color: grey;
+}
+
+.loginComponents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.loginComponents input {
+  width: 300px;
+  height: 25px;
+  font-size: medium;
+  padding-left: 10px;
+}
+
+.loginComponents button {
+  width: 200px;
+  height: 25px;
+  margin-top: 10px;
+}
+
+.loginComponents button:hover {
+  cursor: pointer;
+}
