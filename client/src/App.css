@@ -25,12 +25,45 @@ html {
   padding-left: 10px;
 }
 
-.loginComponents button {
+button {
   width: 200px;
   height: 25px;
   margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-.loginComponents button:hover {
+button:hover {
   cursor: pointer;
+}
+
+.displayComponents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.displayComponentsList {
+  font-weight: 100;
+  font-size: Small;
+  border: black solid 2px;
+  margin-top: 5px;
+  padding: 5px;
+  padding-left: 20%;
+  padding-right: 20%;
+  
+  background-color: aqua;
+}
+
+.displayComponentsList p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.displayComponentsList h3 {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }

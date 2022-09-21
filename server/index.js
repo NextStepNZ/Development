@@ -30,6 +30,27 @@ app.post("/addUser", (req, res) => {
     );
 });
 
+app.post("/deleteAllUsers", (req, res) => {
+    db.query("DELETE FROM logindetails", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})
+
+app.get("/getUserList", (req, res) => {
+    db.query("SELECT * FROM logindetails", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+
+});
+
 app.listen(3001, () => {
     console.log("Server is live on port 3001");
 });
