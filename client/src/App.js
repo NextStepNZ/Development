@@ -3,9 +3,6 @@ import { useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
 
-function App() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
   const [userlist, setUserlist] = useState([]);
 
@@ -83,8 +80,15 @@ function App() {
 
       </div>
 
+    <>
+    <div className='App'>
+        <h1>Landing Page</h1>
+        <br/>
+        <AddUser />
+        <User firstname={'John'} lastname={'Smith'} isTeacher={'true'} />
     </div>
-  );
+    </>
+  )
 }
 
 export default App;
