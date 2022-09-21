@@ -1,7 +1,11 @@
 import "./App.css";
 import React from "react";
+import AddUser from "./components/AddUser";
+import User from './components/User';
 
-function App() {
+
+const App = () => {
+  
   return (
       <div className='App'>
           <h1>Landing Page</h1>

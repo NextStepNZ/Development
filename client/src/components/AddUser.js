@@ -6,6 +6,8 @@ import axios from "axios";
 
 
 function AddUser() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const [userlist, setUserlist] = useState([]);
 
@@ -84,3 +86,5 @@ function AddUser() {
       </div>
     </div>
 )}
+
+export default AddUser
