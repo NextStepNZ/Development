@@ -5,8 +5,6 @@ import AddUser from "./components/AddUser";
 import User from './components/User';
 import {Routes, Route} from 'react-router-dom';
 
-
-
 const App = () => {
   
   return (

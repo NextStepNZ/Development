@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const Navbar = () => {
 return(
     <>
-     <nav>
-          <h1>Next Step</h1>
+     <nav className="nav">
+          <h1 className="nav-title">Next Step</h1>
          <ul>
               <li>
                   <Link to="/">Home</Link>
@@ -14,7 +15,7 @@ return(
                   <Link to="/adduser">Add User</Link>
               </li>
               <li>
-                  <Link to="/userA">User</Link>
+                  <Link to="/user">User</Link>
               </li>
             </ul>
         </nav>

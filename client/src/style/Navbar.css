@@ -1,11 +1,9 @@
 * {
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
 }
-
 .nav {
     background: #222;
     color: white;
@@ -14,13 +12,10 @@ body {
     align-items: stretch; 
     gap: 2rem;
     padding: 0 1rem;
-
 }
-
 .nav h1{
     font-size: 2rem;
 }
-
 .nav ul{
     padding: 0;
     margin: 0;
@@ -28,7 +23,6 @@ body {
     display: flex;
     gap: 1rem;
 }
-
 .nav a{
     color: inherit;
     text-decoration: none;
@@ -37,12 +31,10 @@ body {
     padding: .25rem;
 
 }
-
 .nav li.active {
     background-color: #444;
 }
 .nav li.hover {
     background-color: #666;
-
 }
 
