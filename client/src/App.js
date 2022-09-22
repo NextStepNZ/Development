@@ -1,10 +1,10 @@
-import "./style/App.css";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AddUser from "./components/AddUser";
 import User from './components/User';
 import {Routes, Route} from 'react-router-dom';
+
 
 
 const App = () => {
