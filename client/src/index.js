@@ -4,6 +4,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import "./style/index.css"
+import "./style/Navbar.css"
+import "./style/App.css"
 
 
 
