@@ -8,11 +8,10 @@ import "./style/Navbar.css"
 import "./style/App.css"
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter >
-    <App />
+      <App />
   </BrowserRouter>,
   document.getElementById('root')
 );
