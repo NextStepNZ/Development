@@ -29,6 +29,7 @@ body {
     display: flex;
     align-items: center;
     padding: .25rem;
+    color: #fff;
 
 }
 .nav li.active {
@@ -38,3 +39,7 @@ body {
     background-color: #666;
 }
 
+.nav-title {
+    color: #fff;
+
+}
