@@ -6,6 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 import "./style/index.css"
 import "./style/Navbar.css"
 import "./style/App.css"
+import "./style/Test.css"
 
 
 
