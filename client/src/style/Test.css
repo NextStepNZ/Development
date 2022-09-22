@@ -1,3 +1,20 @@
+li{
+    color: #17252Aed;
+    font-size: 1.5rem;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    text-align: center;
+    list-style: none;
+}
+
+
+.quizStuff li{
+    display:inline-block;
+    width: 30%;
+}
+
+
+
 .question-section{
     text-align: center;
     margin: auto;
@@ -25,8 +42,8 @@
     font-weight: bold;
     border-width: 0.5px;
     border-color: #17252A;
-
 }
+
 .question-section span{
     color: #17252A;
     font-size: 1.5rem;

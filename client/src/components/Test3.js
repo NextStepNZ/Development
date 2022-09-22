@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
+import axios from 'axios'
+
 
 function Test1() {
+	const url = 'https://api.quotable.io/random';
+	
+	const getQuestions = () => {
+		axios.get(url).then(res => {console.log(res)}).catch(err => console.log(err))
+	}
+
+
+
+
 	const questions = [
 		{
 			questionText: ' ',
@@ -73,6 +84,7 @@ function Test1() {
 							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
+					<button onClick ={getQuestions}>Get Question</button>
 				</>
 			)}
 		</div>
