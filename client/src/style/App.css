@@ -9,6 +9,11 @@ html {
   background-color: grey;
 }
 
+.wrapper {
+  padding: 20px;
+}
+
+
 .loginComponents {
   display: flex;
   flex-direction: column;
