@@ -28,7 +28,10 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: .25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.2rem;
     color: #17252A;
     font-size: 2.0rem;
     font-weight: bold;
@@ -42,4 +45,15 @@ body {
 
 .nav-title {
     color: #17252A;
+    padding-top: 0.1rem;
+    padding-bottom: 0.2rem;
 }
+nav{
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: #17252A;
+}
+
