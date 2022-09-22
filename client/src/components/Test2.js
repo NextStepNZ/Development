@@ -1,38 +1,38 @@
 import React, { useState } from 'react';
 
-function Test() {
+function Test1() {
 	const questions = [
 		{
-			questionText: 'C is a: ',
+			questionText: ' ',
 			answerOptions: [
-				{ answerText: 'General-purpose programming language', isCorrect: true },
-				{ answerText: 'Photo editing program', isCorrect: false },
-				{ answerText: 'Client-side scripting language', isCorrect: false },
+				{ answerText: '', isCorrect: true },
+				{ answerText: '', isCorrect: false },
+				{ answerText: '', isCorrect: false },
 
 			],
 		},
 		{
-			questionText: 'Which of the following are valid data types in C??',
+			questionText: '',
 			answerOptions: [
-				{ answerText: 'int, double, char, boolean', isCorrect: false },
-				{ answerText: 'int, bool, string', isCorrect: false },
-				{ answerText: 'int, float, double, char', isCorrect: true },
+				{ answerText: '', isCorrect: false },
+				{ answerText: '', isCorrect: false },
+				{ answerText: '', isCorrect: true },
 			],
 		},
 		{
-			questionText: 'What does a leading 0x or 0X means??',
+			questionText: '',
 			answerOptions: [
-				{ answerText: 'Decimal', isCorrect: false },
-				{ answerText: 'Binary', isCorrect: true },
-				{ answerText: 'Hexadecimal', isCorrect: true},
+				{ answerText: '', isCorrect: false },
+				{ answerText: '', isCorrect: true },
+				{ answerText: '', isCorrect: true},
 
 			],
 		},
 		{
-			questionText: 'C does not have a boolean type.?',
+			questionText: '',
 			answerOptions: [
-				{ answerText: 'True', isCorrect: true },
-				{ answerText: 'False', isCorrect: false },
+				{ answerText: '', isCorrect: true },
+				{ answerText: '', isCorrect: false },
 
 			],
 		},
@@ -78,4 +78,4 @@ function Test() {
 		</div>
 	);
 }
-export default Test;
+export default Test1;
