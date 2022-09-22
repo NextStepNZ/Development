@@ -30,7 +30,7 @@ body {
     align-items: center;
     padding: .25rem;
     color: #fff;
-
+    font-size: 1.5rem;
 }
 .nav li.active {
     background-color: #444;
