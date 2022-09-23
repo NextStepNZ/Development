@@ -99,3 +99,42 @@ app.post("/deleteAllProfiles", (req, res) => {
         }
     })
 })
+
+// Group interface ============================================================
+app.post("/addNewGroup", (req, res) => {
+    const gOwnerID = req.body.gOwnerID;
+    const gName = req.body.gName;
+    const gAssignedQuiz = req.body.gAssignedQuiz
+
+    db.query(
+        "INSERT INTO `groups`(OwnerID, Name, AssignedQuizes) VALUES (?,?,?)",
+        [gOwnerID, gName, gAssignedQuiz],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("values inserted");
+            }
+        }
+    );
+});
+
+app.get("/getGroupList", (req, res) => {
+    db.query("SELECT * FROM `groups`", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.post("/deleteAllGroups", (req, res) => {
+    db.query("DELETE FROM `groups`", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})

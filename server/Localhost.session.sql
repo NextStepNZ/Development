@@ -8,6 +8,16 @@ SELECT * FROM userprofiles
 DELETE FROM userprofiles
 
 -- @block
+CREATE TABLE `nextstepnz`.`groups` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `OwnerID` INT NOT NULL,
+  `Name` TEXT(255) NOT NULL,
+  `AssignedQuizes` TEXT(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE
+);
+
+-- @block
 DELETE FROM logindetails
 DELETE FROM userprofiles
 DELETE FROM groups
@@ -38,13 +48,14 @@ CREATE TABLE `nextstepnz`.`userprofiles` (
   `GroupID` TEXT(255) NULL,
   PRIMARY KEY (`id`));
 
-  CREATE TABLE `nextstepnz`.`groups` (
-  `idgroups` INT NOT NULL,
+CREATE TABLE `nextstepnz`.`groups` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `OwnerID` INT NOT NULL,
   `Name` TEXT(255) NOT NULL,
   `AssignedQuizes` TEXT(255) NULL,
-  PRIMARY KEY (`idgroups`),
-  UNIQUE INDEX `idgroups_UNIQUE` (`idgroups` ASC) VISIBLE);
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+
 
   CREATE TABLE `nextstepnz`.`quizzes` (
   `id` INT NOT NULL,

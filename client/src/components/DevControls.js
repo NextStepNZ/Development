@@ -92,6 +92,45 @@ function DevControls() {
     })
   }
 
+  /* Group DB =======================================================*/
+
+  const [gOwnerID, setGOwnerID] = useState("");
+  const [gName, setGName] = useState("");
+  const [gAssignedQuiz, setGAssignedQuiz] = useState("")
+
+  const [groupList, setGroupList] = useState([]);
+
+  const gOwnerIDInput = useRef(null);
+  const gNameInput = useRef(null);
+  const gAssignedQuizInput = useRef(null);
+
+  const addNewGroup = event => {
+    axios.post('http://localhost:3001/addNewGroup', {
+      gOwnerID: gOwnerID,
+      gName: gName,
+      gAssignedQuiz: gAssignedQuiz
+    })
+      .then(() => console.log("success"));
+
+    gOwnerIDInput.current.value = '';
+    gNameInput.current.value = '';
+    gAssignedQuizInput.current.value = '';
+  }
+
+  const getGroupList = () => {
+    axios.get('http://localhost:3001/getGroupList').then((response) => {
+      console.log(response)
+      setGroupList(response.data)
+    });
+  }
+
+  const deleteAllGroups = () => {
+    axios.post('http://localhost:3001/deleteAllGroups').then((response) => {
+      console.log(response)
+      getGroupList()
+    })
+  }
+
   /**************************************************************************************************/
 
   return (
@@ -237,6 +276,61 @@ function DevControls() {
       </div>
 
       =============================================================================================
+
+      <h1>Group DB Readwrite</h1>
+
+      <div className="loginComponents">
+
+        <label>Group OwnerID</label>
+        <input
+          ref={gOwnerIDInput}
+          type="Text"
+          placeholder="Group owner ID here INT ONLY"
+          onChange={(event) => {
+            setGOwnerID(event.target.value);
+          }}
+        />
+
+        <label>Group Name</label>
+        <input
+          ref={gNameInput}
+          type="Text"
+          placeholder="Group name here"
+          onChange={(event) => {
+            setGName(event.target.value);
+          }}
+        />
+
+        <label>Assigned Quizs</label>
+        <input
+          ref={gAssignedQuizInput}
+          type="Text"
+          placeholder="AssignedQuizzes"
+          onChange={(event) => {
+            setGAssignedQuiz(event.target.value);
+          }}
+        />
+
+        <button onClick={addNewGroup}>Add Group</button>
+
+      </div>
+      ---------------------------------------------------------------------------------------------
+      <div className="displayComponents">
+        <div>
+          <button onClick={getGroupList}> Show all Groups </button>
+          <button onClick={deleteAllGroups}> Delete all Groups</button>
+        </div>
+
+        {groupList.map((val, Key) => {
+          return <div className="displayComponentsList">
+            <h3>Group ID</h3> <p>{val.id}</p>
+            <h3>Owner ID</h3> <p>{val.OwnerID}</p>
+            <h3>Name</h3> <p>{val.Name}</p>
+            <h3>Assigned Quiz</h3> <p>{val.AssignedQuizes}</p>
+          </div>
+        })}
+
+      </div>
 
     </div>
   )
