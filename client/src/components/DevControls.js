@@ -69,7 +69,6 @@ function DevControls() {
     })
       .then(() => { console.log("success") });
 
-    /*
     pTypeInput.current.value = '';
     pFirstNameInput.current.value = '';
     pLastNameInput.current.value = '';
@@ -77,7 +76,20 @@ function DevControls() {
     pUsernameInput.current.value = '';
     pPasswordInput.current.value = '';
     pGroupIDInput.current.value = '';
-*/
+  }
+
+  const getProfileList = () => {
+    axios.get('http://localhost:3001/getProfileList').then((response) => {
+      console.log(response)
+      setProfileList(response.data)
+    });
+  }
+
+  const deleteAllProfiles = () => {
+    axios.post('http://localhost:3001/deleteAllProfiles').then((response) => {
+      console.log(response)
+      getProfileList()
+    })
   }
 
   /**************************************************************************************************/
@@ -203,8 +215,28 @@ function DevControls() {
         <button onClick={addNewProfile}>Add New Profile</button>
 
       </div>
+      ---------------------------------------------------------------------------------------------
 
-        ---------------------------------------------------------------------------------------------
+      <div className="displayComponents">
+        <div>
+          <button onClick={getProfileList}> Show all Data </button>
+          <button onClick={deleteAllProfiles}> Delete all data</button>
+        </div>
+        {profileList.map((val, key) => {
+          return <div className="displayComponentsList">
+            <h3>Type:</h3> <p>{val.Type}</p>
+            <h3>First Name:</h3> <p>{val.FirstName}</p>
+            <h3>Last Name:</h3> <p>{val.LastName}</p>
+            <h3>Email:</h3> <p>{val.Email}</p>
+            <h3>Username:</h3> <p>{val.Username}</p>
+            <h3>Password:</h3> <p>{val.Password}</p>
+            <h3>GroupID:</h3> <p>{val.GroupID}</p>
+          </div>
+        })}
+
+      </div>
+
+      =============================================================================================
 
     </div>
   )

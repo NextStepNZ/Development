@@ -55,7 +55,6 @@ app.get("/getUserList", (req, res) => {
             res.send(result);
         }
     })
-
 });
 
 // UserProfiles Interface =====================================================
@@ -81,3 +80,22 @@ app.post("/addNewProfile", (req, res) => {
     );
 });
 
+app.get("/getProfileList", (req, res) => {
+    db.query("SELECT * FROM userprofiles", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.post("/deleteAllProfiles", (req, res) => {
+    db.query("DELETE FROM userprofiles", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})
