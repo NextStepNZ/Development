@@ -7,6 +7,10 @@ import TestPage from "./components/TestPage";
 import TestOne from "./components/Test1";
 import TestTwo from "./components/Test2";
 import TestThree from "./components/Test3";
+import Test from './components/Test';
+import Login from "./components/Login/Login";
+import Register from "./components/Login/Register"
+
 import {Routes, Route} from 'react-router-dom';
 
 
@@ -23,6 +27,9 @@ const App = () => {
       <Route path='/test1' element={<TestOne/>}/>
       <Route path='/test2' element={<TestTwo/>}/>
       <Route path='/test3' element={<TestThree/>}/>
+      <Route path='/Test' element={<Test/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
     </Routes>
     </>
     );

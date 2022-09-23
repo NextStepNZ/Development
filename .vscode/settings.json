@@ -8,10 +8,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "Localhost",
-            "database": "nextstepnz",
+            "name": "NextStep",
             "username": "root",
-            "password": "password"
+            "database": "nextstepnz",
+            "password": "$r00tpwd211"
         }
     ]
 }
