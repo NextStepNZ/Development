@@ -28,11 +28,11 @@ app.post("/register", (req, res) => {
         "INSERT INTO userprofiles(Type, FirstName, LastName, Email, Username, Password, GroupID) VALUES ('Student',?,?,?,'Test',?,'ABC123')",
         [firstname, lastname, email, password],
         (err, res) => {
-            //if (err) {
+            if (err) {
                 console.log(err)
-            //} else {
-             //   res.send("User Registered")
-            //}
+            } else {
+                res.send("User Registered")
+            }
         }
     );
 });

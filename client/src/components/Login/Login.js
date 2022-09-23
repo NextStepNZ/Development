@@ -44,7 +44,7 @@ export default function Login() {
       } else {
         setLoginStatus(response.data[0].email)
       }
-      console.log(response);
+      console.log(response.data);
     });
   };
 
@@ -120,6 +120,7 @@ export default function Login() {
                 </Link>
               </Grid>
             </Grid>
+            <h2>{loginStatus}</h2>
           </Box>
         </Box>
       </Container>
