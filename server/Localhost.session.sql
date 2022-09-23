@@ -2,6 +2,12 @@
 SELECT * FROM logindetails
 
 -- @block
+SELECT * FROM userprofiles
+
+-- @block
+DELETE FROM userprofiles
+
+-- @block
 DELETE FROM logindetails
 DELETE FROM userprofiles
 DELETE FROM groups
