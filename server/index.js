@@ -6,6 +6,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
+// DB Connection ===============================================================
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
@@ -13,6 +14,12 @@ const db = mysql.createConnection({
     database: "nextstepnz",
 });
 
+// Server Startup and Port Confirmation ========================================
+app.listen(3001, () => {
+    console.log("Server is live on port 3001");
+});
+
+// DB READ WITE TEST ==========================================================
 app.post("/addUser", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -48,9 +55,86 @@ app.get("/getUserList", (req, res) => {
             res.send(result);
         }
     })
-
 });
 
-app.listen(3001, () => {
-    console.log("Server is live on port 3001");
+// UserProfiles Interface =====================================================
+app.post("/addNewProfile", (req, res) => {
+    const pType = req.body.pType;
+    const pFirstName = req.body.pFirstName;
+    const pLastName = req.body.pLastName;
+    const pEmail = req.body.pEmail;
+    const pUsername = req.body.pUsername;
+    const pPassword = req.body.pPassword;
+    const pGroupID = req.body.pGroupID;
+
+    db.query(
+        "INSERT INTO userprofiles(Type, FirstName, LastName, Email, Username, Password, GroupID) VALUES (?,?,?,?,?,?,?)",
+        [pType, pFirstName, pLastName, pEmail, pUsername, pPassword, pGroupID],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("values inserted");
+            }
+        }
+    );
 });
+
+app.get("/getProfileList", (req, res) => {
+    db.query("SELECT * FROM userprofiles", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.post("/deleteAllProfiles", (req, res) => {
+    db.query("DELETE FROM userprofiles", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})
+
+// Group interface ============================================================
+app.post("/addNewGroup", (req, res) => {
+    const gOwnerID = req.body.gOwnerID;
+    const gName = req.body.gName;
+    const gAssignedQuiz = req.body.gAssignedQuiz
+
+    db.query(
+        "INSERT INTO `groups`(OwnerID, Name, AssignedQuizes) VALUES (?,?,?)",
+        [gOwnerID, gName, gAssignedQuiz],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("values inserted");
+            }
+        }
+    );
+});
+
+app.get("/getGroupList", (req, res) => {
+    db.query("SELECT * FROM `groups`", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.post("/deleteAllGroups", (req, res) => {
+    db.query("DELETE FROM `groups`", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})

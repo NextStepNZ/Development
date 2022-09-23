@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import AddUser from "./components/AddUser";
+import DevControls from "./components/DevControls";
 import User from './components/User';
 import TestPage from "./components/TestPage";
 import TestOne from "./components/Test1";
@@ -17,7 +17,7 @@ const App = () => {
     <Navbar />
     <Routes> 
       <Route path='/' element={<Home />}/>
-      <Route path='/adduser' element={<AddUser />}/>
+      <Route path='/devcontrols' element={<DevControls />}/>
       <Route path='/user' element={<User firstname={'John'} lastname={'Smith'} isTeacher={'true'}/>}/>
       <Route path='/testPage' element={<TestPage/>}/>
       <Route path='/test1' element={<TestOne/>}/>
