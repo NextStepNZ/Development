@@ -18,23 +18,46 @@ const db = mysql.createConnection({
 // Login System.
 app.post("/register", (req, res) => {
 
-    const email = req.body.email
+
     const password = req.body.password
+    const email = req.body.email
     const firstname = req.body.firstname
     const lastname = req.body.lastname
 
     db.query(
         "INSERT INTO userprofiles(Type, FirstName, LastName, Email, Username, Password, GroupID) VALUES ('Student',?,?,?,'Test',?,'ABC123')",
         [firstname, lastname, email, password],
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send("User Registered");
-            }
+        (err, res) => {
+            //if (err) {
+                console.log(err)
+            //} else {
+             //   res.send("User Registered")
+            //}
         }
     );
+});
 
+app.post("/login", (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    db.query(
+        "SELECT * FROM userprofiles WHERE email = ? AND password = ?",
+        [email, password],
+        (err, result) => {
+            if (err) {
+                console.log(err)
+                res.send({ err: err })
+            }
+            if (result.length > 0) {
+                console.log(result)
+                res.send(result)
+            } else {
+                res.send({ message: "Email or Password is Incorrect!" })
+            }
+
+        }
+    );
 });
 
 

@@ -27,17 +27,19 @@ export default function Register() {
 
   const registerReq = (event) => {
     event.preventDefault()
+    
     console.log({
       email: emailReg,
       password: passwordReg,
       firstname: firstNameReg,
-      lastname: lastNameReg
+      lastname: lastNameReg,
     });
+
     Axios.post("http://localhost:3001/register", {
       email: emailReg,
       password: passwordReg,
       firstname: firstNameReg,
-      lastname: lastNameReg
+      lastname: lastNameReg,
     }).then((response) => {
       console.log(response);
     });
@@ -126,11 +128,11 @@ export default function Register() {
               </Grid>
             </Grid>
             <Button
-              onClick={registerReq}
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={registerReq}
             >
               Sign Up
             </Button>

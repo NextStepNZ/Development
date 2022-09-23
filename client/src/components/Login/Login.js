@@ -20,33 +20,33 @@ import Axios from 'axios';
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    setEmailReg(data.get('email'));
-    setPasswordReg(data.get('password'))
 
-    registerReq()
 
+  const [emailLog, setEmailLog] = useState("")
+  const [passwordLog, setPasswordLog] = useState("")
+
+  const [loginStatus, setLoginStatus] = useState("")
+
+  const loginReq = (event) => {
+    event.preventDefault()
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: emailLog,
+      password: passwordLog
     });
-  };
 
-  const [emailReg, setEmailReg] = useState("")
-  const [passwordReg, setPasswordReg] = useState("")
-
-  const registerReq = () => {
-    Axios.post("http://localhost:3001/register", {
-      email: emailReg,
-      password: passwordReg,
+    Axios.post("http://localhost:3001/login", {
+      email: emailLog,
+      password: passwordLog,
     }).then((response) => {
+
+      if (response.data.message) {
+        setLoginStatus(response.data.message)
+      } else {
+        setLoginStatus(response.data[0].email)
+      }
       console.log(response);
     });
   };
-
-
 
 
   return (
@@ -68,7 +68,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -78,6 +78,9 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(event) => {
+                setEmailLog(event.target.value);
+              }}
             />
             <TextField
               margin="normal"
@@ -88,6 +91,9 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(event) => {
+                setPasswordLog(event.target.value);
+              }}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -98,6 +104,7 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={loginReq}
             >
               Sign In
             </Button>
