@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,15 +14,32 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import Axios from 'axios';
+
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+export default function Register() {
+
+  const [emailReg, setEmailReg] = useState("")
+  const [passwordReg, setPasswordReg] = useState("")
+  const [firstNameReg, setFirstNameReg] = useState("")
+  const [lastNameReg, setLastNameReg] = useState("")
+
+  const registerReq = (event) => {
+    event.preventDefault()
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: emailReg,
+      password: passwordReg,
+      firstname: firstNameReg,
+      lastname: lastNameReg
+    });
+    Axios.post("http://localhost:3001/register", {
+      email: emailReg,
+      password: passwordReg,
+      firstname: firstNameReg,
+      lastname: lastNameReg
+    }).then((response) => {
+      console.log(response);
     });
   };
 
@@ -43,10 +61,11 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -54,6 +73,9 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(event) => {
+                    setFirstNameReg(event.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -64,6 +86,9 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(event) => {
+                    setLastNameReg(event.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -74,6 +99,9 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) => {
+                    setEmailReg(event.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -85,6 +113,9 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(event) => {
+                    setPasswordReg(event.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -95,6 +126,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
+              onClick={registerReq}
               type="submit"
               fullWidth
               variant="contained"

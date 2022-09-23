@@ -3,4 +3,4 @@ SELECT * FROM logindetails
 
 
 -- @block
-DELETE FROM logindetails
+DELETE FROM userprofiles
