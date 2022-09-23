@@ -1,41 +1,42 @@
 import React, { useState } from 'react';
 
-
-function Test1() {
-
-	const questions = [
+function Test3() {
+	const questionList = [
 		{
-			questionText: ' ',
-			answerOptions: [
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: false },
+			question: 'Which of the following is not a primary trait of malware?',
+			answers: [
+				{ answer: 'diffusion', correctOrNot: true },
+				{ answer: 'circulation', correctOrNot: false },
+				{ answer: 'infection', correctOrNot: false },
+				{ answer: 'concealment', correctOrNot: false },
 
 			],
 		},
 		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: true },
+			question: 'Which type of malware requires a user to transport it from one computer to another?',
+			answers: [
+				{ answer: 'worm', correctOrNot: false },
+				{ answer: 'rootkit', correctOrNot: false },
+				{ answer: 'adware', correctOrNot: true },
+				{ answer: 'virus', correctOrNot: false },
 			],
 		},
 		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: true},
-
+			question: '_____ sends phishing messages only to wealthy individuals.',
+			answers: [
+				{ answer: 'Target phishing', correctOrNot: false },
+				{ answer: 'Whaling', correctOrNot: true },
+				{ answer: 'Spear phishing', correctOrNot: false},
+				{ answer: 'Microing', correctOrNot: false },
 			],
 		},
 		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: false },
-
+			question: 'What is the term used for a threat actor who controls multiple bots in a botnet?',
+			answers: [
+				{ answer: 'zombie shepherd', correctOrNot: false },
+				{ answer: 'bot herder', correctOrNot: true },
+				{ answer: 'rogue IRC', correctOrNot: false },
+				{ answer: 'cyber-robot', correctOrNot: false },
 			],
 		},
 	];
@@ -44,35 +45,35 @@ function Test1() {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const AnswerClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < questionList.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
 	};
 	return (
-		<div className='app'>
+		<div className='test'>
 			{showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {score} out of {questionList.length}
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{questionList.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questionList[currentQuestion].question}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						{questionList[currentQuestion].answers.map((answerOption) => (
+							<button onClick={() => AnswerClick(answerOption.correctOrNot)}>{answerOption.answer}</button>
 						))}
 					</div>
 				</>
@@ -80,4 +81,4 @@ function Test1() {
 		</div>
 	);
 }
-export default Test1;
+export default Test3;
