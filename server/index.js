@@ -6,6 +6,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
+// DB Connection ===============================================================
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
@@ -13,6 +14,12 @@ const db = mysql.createConnection({
     database: "nextstepnz",
 });
 
+// Server Startup and Port Confirmation ========================================
+app.listen(3001, () => {
+    console.log("Server is live on port 3001");
+});
+
+// DB READ WITE TEST ==========================================================
 app.post("/addUser", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -51,6 +58,26 @@ app.get("/getUserList", (req, res) => {
 
 });
 
-app.listen(3001, () => {
-    console.log("Server is live on port 3001");
+// UserProfiles Interface =====================================================
+app.post("/addNewProfile", (req, res) => {
+    const pType = req.body.pType;
+    const pFirstName = req.body.pFirstName;
+    const pLastName = req.body.pLastName;
+    const pEmail = req.body.pEmail;
+    const pUsername = req.body.pUsername;
+    const pPassword = req.body.pPassword;
+    const pGroupID = req.body.pGroupID;
+
+    db.query(
+        "INSERT INTO userprofiles(Type, FirstName, LastName, Email, Username, Password, GroupID) VALUES (?,?,?,?,?,?,?)",
+        [pType, pFirstName, pLastName, pEmail, pUsername, pPassword, pGroupID],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("values inserted");
+            }
+        }
+    );
 });
+
