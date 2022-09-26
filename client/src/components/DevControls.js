@@ -131,6 +131,41 @@ function DevControls() {
     })
   }
 
+  /* Quizzes DB ======================================================*/
+
+  const [qID, setQID] = useState("");
+  const [qName, setQName] = useState("");
+
+  const [QuizList, setQuizList] = useState([]);
+
+  const qIDInput = useRef(null);
+  const qNameInput = useRef(null);
+
+  const addNewQuiz = event => {
+    axios.post('http://localhost:3001/addNewQuiz', {
+      qID: qID,
+      qName: qName
+    })
+    .then(() => console.log("success"));
+
+    qIDInput.current.value = '';
+    qNameInput.current.value = '';
+  }
+
+  const getQuizList = () => {
+    axios.get('http://localhost:3001/getQuizList').then((response) => {
+      console.log(response)
+      setQuizList(response.data)
+    });
+  }
+
+  const deleteAllQuizzes = () => {
+    ('http://localhost:3001/deleteAllQuizzes').then((response) => {
+      console.log(response)
+      getQuizList();
+    })
+  }
+  
   /*****************************************************************************************************/
 
   return (
