@@ -160,12 +160,12 @@ function DevControls() {
   }
 
   const deleteAllQuizzes = () => {
-    ('http://localhost:3001/deleteAllQuizzes').then((response) => {
+    axios.post('http://localhost:3001/deleteAllQuizzes').then((response) => {
       console.log(response)
       getQuizList();
     })
   }
-  
+
   /*****************************************************************************************************/
 
   return (
@@ -373,37 +373,42 @@ function DevControls() {
 
       <div className="loginComponents">
 
-        <label>Group OwnerID</label>
+        <label>Quiz ID</label>
         <input
-          ref={gOwnerIDInput}
+          ref={qIDInput}
           type="Text"
-          placeholder="Group owner ID here INT ONLY"
+          placeholder="Quiz ID Number"
           onChange={(event) => {
-            setGOwnerID(event.target.value);
+            setQID(event.target.value);
           }}
         />
 
-        <label>Group Name</label>
+        <label>Quiz Name</label>
         <input
-          ref={gNameInput}
+          ref={qNameInput}
           type="Text"
-          placeholder="Group name here"
+          placeholder="Quiz Name Here"
           onChange={(event) => {
-            setGName(event.target.value);
+            setQName(event.target.value);
           }}
         />
 
-        <label>Assigned Quizs</label>
-        <input
-          ref={gAssignedQuizInput}
-          type="Text"
-          placeholder="AssignedQuizzes"
-          onChange={(event) => {
-            setGAssignedQuiz(event.target.value);
-          }}
-        />
+        <button onClick={addNewQuiz}>Add Quiz</button>
 
-        <button onClick={addNewGroup}>Add Group</button>
+      </div>
+      ---------------------------------------------------------------------------------------------
+      <div className="displayComponents">
+        <div>
+          <button onClick={getQuizList}> Show all Quizzes </button>
+          <button onClick={deleteAllQuizzes}> Delete all Quizzes</button>
+        </div>
+
+        {QuizList.map((val, Key) => {
+          return <div className="displayComponentsList">
+            <h3>Quiz ID</h3> <p>{val.id}</p>
+            <h3>Quiz Name ID</h3> <p>{val.name}</p>
+          </div>
+        })}
 
       </div>
 

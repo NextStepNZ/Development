@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "$r00tpwd211",
+    password: "password",
     database: "nextstepnz",
 });
 
@@ -201,7 +201,7 @@ app.post("/addNewQuiz", (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                console.log(result);
+                console.log("Quiz DB Values Inserted");
                 res.send("Values Inserted");
             }
         }
