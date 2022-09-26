@@ -188,3 +188,5 @@ app.post("/deleteAllGroups", (req, res) => {
         }
     })
 })
+
+// Quizzes Interface ==========================================================

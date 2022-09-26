@@ -6,7 +6,7 @@ import axios from "axios";
 
 function DevControls() {
 
-  /*  DB Readwite Test ==============================================*/
+  /*  DB Readwrite Test ==============================================*/
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -329,6 +329,46 @@ function DevControls() {
             <h3>Assigned Quiz</h3> <p>{val.AssignedQuizes}</p>
           </div>
         })}
+
+      </div>
+
+      =============================================================================================
+      
+      <h1>Quizzes DB ReadWrite</h1>
+
+      <div className="loginComponents">
+
+        <label>Group OwnerID</label>
+        <input
+          ref={gOwnerIDInput}
+          type="Text"
+          placeholder="Group owner ID here INT ONLY"
+          onChange={(event) => {
+            setGOwnerID(event.target.value);
+          }}
+        />
+
+        <label>Group Name</label>
+        <input
+          ref={gNameInput}
+          type="Text"
+          placeholder="Group name here"
+          onChange={(event) => {
+            setGName(event.target.value);
+          }}
+        />
+
+        <label>Assigned Quizs</label>
+        <input
+          ref={gAssignedQuizInput}
+          type="Text"
+          placeholder="AssignedQuizzes"
+          onChange={(event) => {
+            setGAssignedQuiz(event.target.value);
+          }}
+        />
+
+        <button onClick={addNewGroup}>Add Group</button>
 
       </div>
 
