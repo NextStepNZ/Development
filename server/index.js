@@ -190,3 +190,40 @@ app.post("/deleteAllGroups", (req, res) => {
 })
 
 // Quizzes Interface ==========================================================
+app.post("/addNewQuiz", (req, res) => {
+    const qID = req.body.qID;
+    const qName = req.body.qName;
+
+    db.query(
+        "INSERT INTO quizzes (id, name) VALUES (?,?)",
+        [qID,qName],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(result);
+                res.send("Values Inserted");
+            }
+        }
+    )
+})
+
+app.get("/getQuizList", (req, res) => {
+    db.query("SELECT * FROM quizzes", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
+
+app.post('/deleteAllQuizzes', (req, res) => {
+    db.query("DELETE FROM quizzes", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send("All Values Deleted")
+        }
+    })
+})
