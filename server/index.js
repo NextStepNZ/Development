@@ -230,3 +230,52 @@ app.post('/deleteAllQuizzes', (req, res) => {
         }
     })
 })
+
+// Questions Interface ========================================================
+app.post("/addNewQuestion", (req, res) => {
+    const quID = req.body.quID;
+    const quQuizID = req.body.quQuizID;
+    const quType = req.body.quType;
+    const quQuestion = req.body.quQuestion;
+    const quAnswer = req.body.quAnswer;
+    const quWrrAnswer1 = req.body.quWrrAnswer1;
+    const quWrrAnswer2 = req.body.quWrrAnswer2;
+    const quWrrAnswer3 = req.body.quWrrAnswer3;
+    const quWrrAnswer4 = req.body.quWrrAnswer4;
+    const quWrrAnswer5 = req.body.quWrrAnswer5;
+
+    db.query(
+        "INSERT INTO questions (id, QuizID, Type, Question, Answer, WrrAnswer1, WrrAnswer2, WrrAnswer3, WrrAnswer4, WrrAnswer5) VALUES (?,?,?,?,?,?,?,?,?,?)",
+        [quID, quQuizID, quType, quQuestion, quAnswer, quWrrAnswer1, quWrrAnswer2, quWrrAnswer3, quWrrAnswer4, quWrrAnswer5],
+        (err, result) => {
+            if (err) {
+                console.log("🚀 ~ file: index.js ~ line 252 ~ app.post ~ err", err)
+            } else {
+                console.log("🚀 ~ file: index.js ~ line 251 ~ app.post ~ result", result)
+                res.send("Values Inserted");
+            }
+        }
+    )
+})
+
+app.get("/getQuestionList", (req, res) => {
+    db.query("SELECT * FROM questions", (err, result) => {
+        if (err) {
+            console.log("🚀 ~ file: index.js ~ line 264 ~ db.query ~ err", err)
+        } else {
+            console.log("🚀 ~ file: index.js ~ line 263 ~ db.query ~ result", result)
+            res.send(result)
+        }
+    })
+})
+
+app.post('/deleteAllQuestions', (req, res) => {
+    db.query("DELETE FROM questions", (err, result) => {
+        if (err) {
+            console.log("🚀 ~ file: index.js ~ line 275 ~ db.query ~ err", err)
+        } else {
+            console.log("🚀 ~ file: index.js ~ line 274 ~ db.query ~ result", result)
+            res.send("All Values Deleted")
+        }
+    })
+})
