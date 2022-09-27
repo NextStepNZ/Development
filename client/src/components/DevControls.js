@@ -166,6 +166,74 @@ function DevControls() {
     })
   }
 
+  /* Questions DB ======================================================*/
+
+  const [quID, setQUID] = useState("");
+  const [quQuizID, setQUQuizID] = useState("");
+  const [quType, setQUType] = useState("");
+  const [quQuestion, setQUQuestion] = useState("");
+  const [quAnswer, setQUAnswer] = useState("");
+  const [quWrrAnswer1, setQUWrrAnswer1] = useState("");
+  const [quWrrAnswer2, setQUWrrAnswer2] = useState("");
+  const [quWrrAnswer3, setQUWrrAnswer3] = useState("");
+  const [quWrrAnswer4, setQUWrrAnswer4] = useState("");
+  const [quWrrAnswer5, setQUWrrAnswer5] = useState("");
+
+  const [quQuestionList, setQUQuestionList] = useState([]);
+
+  const quIDInput = useRef(null);
+  const quQuizIDInput = useRef(null);
+  const quTypeInput = useRef(null);
+  const quQuestionInput = useRef(null);
+  const quAnswerInput = useRef(null);
+  const quWrrAnswer1Input = useRef(null);
+  const quWrrAnswer2Input = useRef(null);
+  const quWrrAnswer3Input = useRef(null);
+  const quWrrAnswer4Input = useRef(null);
+  const quWrrAnswer5Input = useRef(null);
+
+  const addNewQuestion = () => {
+    axios.post('http://localhost:3001/addNewQuestion', {
+      quID: quID,
+      quQuizID: quQuizID,
+      quType: quType,
+      quQuestion: quQuestion,
+      quAnswer: quAnswer,
+      quWrrAnswer1: quWrrAnswer1,
+      quWrrAnswer2: quWrrAnswer2,
+      quWrrAnswer3: quWrrAnswer3,
+      quWrrAnswer4: quWrrAnswer4,
+      quWrrAnswer5: quWrrAnswer5
+    })
+    .then(() => console.log("success"));
+
+    quIDInput.current.value = '';
+    quQuizIDInput.current.value = '';
+    quTypeInput.current.value = '';
+    quQuestionInput.current.value = '';
+    quAnswerInput.current.value = '';
+    quWrrAnswer1Input.current.value = '';
+    quWrrAnswer2Input.current.value = '';
+    quWrrAnswer3Input.current.value = '';
+    quWrrAnswer4Input.current.value = '';
+    quWrrAnswer5Input.current.value = '';
+
+  }
+
+  const getQuestionList = () => {
+    axios.get('http://localhost:3001/getQuestionList').then((response) => {
+      console.log("🚀 ~ file: DevControls.js ~ line 225 ~ axios.get ~ response", response)
+      setQUQuestionList(response.data);
+    })
+  }
+
+  const deleteAllQuestions = () => {
+    axios.post('http://localhost:3001/deleteallQuestions').then((response) => {
+      console.log("🚀 ~ file: DevControls.js ~ line 232 ~ axios.post ~ response", response)
+      getQuestionList();
+    })
+  }
+
   /*****************************************************************************************************/
 
   return (
