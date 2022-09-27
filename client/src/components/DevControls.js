@@ -146,7 +146,7 @@ function DevControls() {
       qID: qID,
       qName: qName
     })
-    .then(() => console.log("success"));
+      .then(() => console.log("success"));
 
     qIDInput.current.value = '';
     qNameInput.current.value = '';
@@ -205,7 +205,7 @@ function DevControls() {
       quWrrAnswer4: quWrrAnswer4,
       quWrrAnswer5: quWrrAnswer5
     })
-    .then(() => console.log("success"));
+      .then(() => console.log("success"));
 
     quIDInput.current.value = '';
     quQuizIDInput.current.value = '';
@@ -436,7 +436,7 @@ function DevControls() {
       </div>
 
       =============================================================================================
-      
+
       <h1>Quizzes DB ReadWrite</h1>
 
       <div className="loginComponents">
@@ -475,6 +475,139 @@ function DevControls() {
           return <div className="displayComponentsList">
             <h3>Quiz ID</h3> <p>{val.id}</p>
             <h3>Quiz Name ID</h3> <p>{val.name}</p>
+          </div>
+        })}
+
+      </div>
+
+      =============================================================================================
+
+      <h1>Questions DB ReadWrite</h1>
+
+      <div className="loginComponents">
+
+        <label>Question ID</label>
+        <input
+          ref={quIDInput}
+          type="Text"
+          placeholder="Question ID Number"
+          onChange={(event) => {
+            setQUID(event.target.value);
+          }}
+        />
+
+        <label>Quiz ID Name</label>
+        <input
+          ref={quQuizIDInput}
+          type="Text"
+          placeholder="Quiz ID Here"
+          onChange={(event) => {
+            setQUQuizID(event.target.value);
+          }}
+        />
+
+        <label>Question Type</label>
+        <input
+          ref={quTypeInput}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUType(event.target.value);
+          }}
+        />
+
+        <label>Question Text</label>
+        <input
+          ref={quQuestionInput}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUQuestion(event.target.value);
+          }}
+        />
+
+        <label>Answer Text</label>
+        <input
+          ref={quAnswerInput}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUAnswer(event.target.value);
+          }}
+        />
+
+        <label>Wrong Answer 1</label>
+        <input
+          ref={quWrrAnswer1Input}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUWrrAnswer1(event.target.value);
+          }}
+        />
+
+        <label>Wrong Answer 2</label>
+        <input
+          ref={quWrrAnswer2Input}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUWrrAnswer2(event.target.value);
+          }}
+        />
+
+        <label>Wrong Answer 3</label>
+        <input
+          ref={quWrrAnswer3Input}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUWrrAnswer3(event.target.value);
+          }}
+        />
+
+        <label>Wrong Answer 4</label>
+        <input
+          ref={quWrrAnswer4Input}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUWrrAnswer4(event.target.value);
+          }}
+        />
+
+        <label>Wrong Answer 5</label>
+        <input
+          ref={quWrrAnswer5Input}
+          type="Text"
+          placeholder="//"
+          onChange={(event) => {
+            setQUWrrAnswer5(event.target.value);
+          }}
+        />
+
+        <button onClick={addNewQuestion}>Add Question</button>
+
+      </div>
+      ---------------------------------------------------------------------------------------------
+      <div className="displayComponents">
+        <div>
+          <button onClick={getQuestionList}> Show all Questions </button>
+          <button onClick={deleteAllQuestions}> Delete all Questions</button>
+        </div>
+
+        {quQuestionList.map((val, Key) => {
+          return <div className="displayComponentsList">
+            <h3>quIDInput</h3><p>{val.id}</p>
+            <h3>quQuizIDInput</h3><p>{val.QuizID}</p>
+            <h3>quTypeInput</h3><p>{val.Type}</p>
+            <h3>quQuestionInput</h3><p>{val.Question}</p>
+            <h3>quAnswerInput</h3><p>{val.Answer}</p>
+            <h3>quWrrAnswer1Input</h3><p>{val.WrrAnswer1}</p>
+            <h3>quWrrAnswer2Input</h3><p>{val.WrrAnswer2}</p>
+            <h3>quWrrAnswer3Input</h3><p>{val.WrrAnswer3}</p>
+            <h3>quWrrAnswer4Input</h3><p>{val.WrrAnswer4}</p>
+            <h3>quWrrAnswer5Input</h3><p>{val.WrrAnswer5}</p>
           </div>
         })}
 
