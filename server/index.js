@@ -37,6 +37,7 @@ app.post("/register", (req, res) => {
             if (err) {
                 console.log(err)
             } else {
+                console.log("New User Registered")
                 res.send("User Registered")
             }
         }
@@ -79,6 +80,7 @@ app.post("/addUser", (req, res) => {
             if (err) {
                 console.log(err);
             } else {
+                console.log("Values inserted into Logindetails DB")
                 res.send("values inserted");
             }
         }
@@ -91,6 +93,7 @@ app.post("/deleteAllUsers", (req, res) => {
         if (err) {
             console.log(err)
         } else {
+            console.log("All Values Deleted from logindetails DB")
             res.send("All Values Deleted")
         }
     })

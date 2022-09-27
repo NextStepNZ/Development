@@ -11,7 +11,7 @@
             "name": "NextStep",
             "username": "root",
             "database": "nextstepnz",
-            "password": "$r00tpwd211"
+            "password": "password"
         }
     ]
 }

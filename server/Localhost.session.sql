@@ -29,7 +29,11 @@ DELETE FROM token
 
 CREATE SCHEMA `nextstepnz` ;
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+-- @block
+
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password';
+
+-- @block
 
 CREATE TABLE `nextstepnz`.`logindetails` (
   `idloginDetails` INT NOT NULL AUTO_INCREMENT,
