@@ -18,8 +18,8 @@ SELECT * FROM `groups`
 -- DELETE AND DROP QUERIES ------------------------------------------
 
 -- @block
-DELETE FROM userprofiles;
-ALTER TABLE userprofiles AUTO_INCREMENT = 100;
+-- DELETE FROM userprofiles;
+-- ALTER TABLE userprofiles AUTO_INCREMENT = 100;
 
 -- @block
 DELETE FROM logindetails;
