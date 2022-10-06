@@ -7,19 +7,16 @@ SELECT * FROM logindetails
 SELECT * FROM userprofiles
 
 -- @block
-SELECT * FROM questions
+SELECT * FROM `groups`
 
 -- @block
 SELECT * FROM quizzes
 
 -- @block
-SELECT * FROM `groups`
-
--- DELETE AND DROP QUERIES ------------------------------------------
+SELECT * FROM questions
 
 -- @block
--- DELETE FROM userprofiles;
--- ALTER TABLE userprofiles AUTO_INCREMENT = 100;
+SELECT * FROM token
 
 -- @block
 DELETE FROM logindetails;
@@ -29,13 +26,6 @@ DELETE FROM quizzes;
 DELETE FROM questions;
 DELETE FROM token;
 
-ALTER TABLE userprofiles AUTO_INCREMENT = 100;
-ALTER TABLE `groups` AUTO_INCREMENT = 100;
-ALTER TABLE quizzes AUTO_INCREMENT = 100;
-ALTER TABLE questions AUTO_INCREMENT = 100;
-ALTER TABLE token AUTO_INCREMENT = 100;
-
--- @block
 DROP TABLE logindetails;
 DROP TABLE userprofiles;
 DROP TABLE `groups`;
@@ -51,7 +41,23 @@ CREATE SCHEMA `nextstepnz` ;
 -- @block
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password';
 
+-- ===============================================================================================================
+-- Run this Block for a FRESH RESET of the DB -----------------------
 -- @block
+DELETE FROM logindetails;
+DELETE FROM userprofiles;
+DELETE FROM `groups`;
+DELETE FROM quizzes;
+DELETE FROM questions;
+DELETE FROM token;
+
+DROP TABLE logindetails;
+DROP TABLE userprofiles;
+DROP TABLE `groups`;
+DROP TABLE quizzes;
+DROP TABLE questions;
+DROP TABLE token;
+
 CREATE TABLE `nextstepnz`.`logindetails` (
   `idloginDetails` INT NOT NULL AUTO_INCREMENT,
   `userName` TEXT(255) NOT NULL,
@@ -77,11 +83,12 @@ CREATE TABLE `nextstepnz`.`groups` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
 
-  CREATE TABLE `nextstepnz`.`quizzes` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` TEXT(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+CREATE TABLE `nextstepnz`.`quizzes` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`name` TEXT(255) NOT NULL,
+`time_seconds` INT NULL,
+PRIMARY KEY (`id`),
+UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
 
 CREATE TABLE `nextstepnz`.`questions` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -110,8 +117,6 @@ ALTER TABLE quizzes AUTO_INCREMENT = 100;
 ALTER TABLE questions AUTO_INCREMENT = 100;
 ALTER TABLE token AUTO_INCREMENT = 100;
 
--- @block
-
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password    ) VALUES ( "Dev","Salman","A","Dev1@gmail.com","SalmanA","Pa$sword1." );
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password    ) VALUES ( "Dev","Corban","M","Dev2@gmail.com","CorbanM","Pa$sword1." );
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password    ) VALUES ( "Dev","Henri","Q","Dev3@gmail.com","HenriQ","Pa$sword1." );
@@ -124,14 +129,10 @@ INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password,Group
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password,GroupID    ) VALUES ( "Student","Student","Three","Student3@gmail.com","Student3","password3","2,3" );
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password,GroupID    ) VALUES ( "Student","Student","Four","Student4@gmail.com","Student4","password4","2,3" );
 INSERT INTO userprofiles ( Type,FirstName,LastName,Email,Username,Password,GroupID    ) VALUES ( "Student","Student","Five","Student5@gmail.com","Student5","password5","2,3" );
-
--- @block
 INSERT INTO quizzes ( name, time_seconds ) VALUES ( "Maths Easy",    120 );
 INSERT INTO quizzes ( name ) VALUES ( "Maths Medium"   );
 INSERT INTO quizzes ( name ) VALUES ( "Maths Hard"    );
 INSERT INTO quizzes ( name, time_seconds ) VALUES ( "English Normal", 180);
-
--- @block
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 100,"MultiChoice","Answer the following, 1 + 1 = ?","2","1","3","4","5","6" );
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 100,"MultiChoice","Answer the following, 1 + 2 = ?","3","2","1","4","5","6" );
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 100,"MultiChoice","Answer the following, 1 + 3 = ?","4","3","1","2","5","6" );
@@ -144,28 +145,8 @@ INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAns
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 103,"MultiChoice","Is this word spelt correctly? | Wondrful |","No","Yes",NULL,NULL,NULL,NULL );
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 103,"MultiChoice","What are the five vowels?","A, E, I, O, U","W, A, R, F, W","T, D, Q, D, G","H, C, S, H, A","K, V, X, O, A","D, G, V, Q, F" );
 INSERT INTO questions ( QuizID,Type,Question,Answer,WrrAnswer1,WrrAnswer2,WrrAnswer3,WrrAnswer4,WrrAnswer5    ) VALUES ( 103,"MultiChoice","What colour is an apple?","Red","Yellow",NULL,NULL,NULL,NULL );
-
--- @block
 INSERT INTO `groups` ( OwnerID,Name,AssignedQuizes ) VALUES ( 104,"Math101","100,101" );
 INSERT INTO `groups` ( OwnerID,Name,AssignedQuizes ) VALUES ( 105,"Math102","102" );
 INSERT INTO `groups` ( OwnerID,Name,AssignedQuizes ) VALUES ( 106,"English101","103" );
 
--- UPDATE 1 to DB (Updated Quizzes tables to include a timer in seconds. Run this block to apply update and re-populate the data)
--- @block
-DELETE FROM quizzes;
-
-DROP TABLE quizzes;
-
-CREATE TABLE `nextstepnz`.`quizzes` (
-`id` INT NOT NULL AUTO_INCREMENT,
-`name` TEXT(255) NOT NULL,
-`time_seconds` INT NULL,
-PRIMARY KEY (`id`),
-UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
-
-ALTER TABLE quizzes AUTO_INCREMENT = 100;
-
-INSERT INTO quizzes ( name, time_seconds ) VALUES ( "Maths Easy",    120 );
-INSERT INTO quizzes ( name ) VALUES ( "Maths Medium"   );
-INSERT INTO quizzes ( name ) VALUES ( "Maths Hard"    );
-INSERT INTO quizzes ( name, time_seconds ) VALUES ( "English Normal", 180);
+-- ===============================================================================================================
