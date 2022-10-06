@@ -4,7 +4,7 @@ function Teacher() {
     return(
         
         <div>
-            Hello World, this is the teacher panel!
+            Hello World, Look into MUI for this page 
         </div>
         
     );
