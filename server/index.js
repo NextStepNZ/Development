@@ -292,7 +292,7 @@ app.post("/searchStudent", (req, res) => {
         fName = '%' + fName + '%';
         lName = '%' + lName + '%';
         db.query(
-            "SELECT * FROM userprofiles WHERE FirstName LIKE ? OR LastName LIKE ?",
+            "SELECT * FROM userprofiles WHERE FirstName LIKE ? AND LastName LIKE ?",
             [fName, lName],
             (err, result) => {
                 if (err) {

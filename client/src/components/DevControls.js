@@ -27,6 +27,7 @@ function DevControls() {
     axios.get('http://localhost:3001/getUserList').then((response) => {
       console.log(response)
       setUserlist(response.data)
+      console.log(userlist);
     });
   }
 
