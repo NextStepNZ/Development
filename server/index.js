@@ -279,3 +279,60 @@ app.post('/deleteAllQuestions', (req, res) => {
         }
     })
 })
+
+// Teacher Calls ==============================================================
+app.post("/searchStudent", (req, res) => {
+    var fName = req.body.studentFName;
+    var lName = req.body.studentLName;
+
+    console.log(fName);
+    console.log(lName);
+    
+    if (fName && lName) {
+        fName = '%' + fName + '%';
+        lName = '%' + lName + '%';
+        db.query(
+            "SELECT * FROM userprofiles WHERE FirstName LIKE ? AND LastName LIKE ?",
+            [fName, lName],
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("🚀 ~ file: index.js ~ BOTH ~ app.post ~ result", result)
+                    res.send(result);
+                }
+            }
+        )
+    } else if (fName) {
+        fName = '%' + fName + '%';
+        db.query(
+            "SELECT * FROM userprofiles WHERE FirstName LIKE ?",
+            [fName],
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("🚀 ~ file: index.js ~ line fNameTrue ~ app.post ~ result", result)
+                    res.send(result);
+                }
+            }
+        )
+    } else if (lName) {
+        lName = '%' + lName + '%';
+        db.query(
+            "SELECT * FROM userprofiles WHERE LastName LIKE ?",
+            [lName],
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("🚀 ~ file: index.js ~ LASTNAME ~ app.post ~ result", result)
+                    res.send(result);
+                }
+            }
+        )
+    }
+
+});
+
+

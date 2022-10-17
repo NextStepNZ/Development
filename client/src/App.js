@@ -8,7 +8,8 @@ import TestOne from "./components/Test1";
 import TestTwo from "./components/Test2";
 import TestThree from "./components/Test3";
 import Login from "./components/Login/Login";
-import Register from "./components/Login/Register"
+import Register from "./components/Login/Register";
+import Teacher from "./components/Teacher";
 
 import {Routes, Route} from 'react-router-dom';
 
@@ -21,6 +22,7 @@ const App = () => {
     <Routes> 
       <Route path='/' element={<Home />}/>
       <Route path='/devcontrols' element={<DevControls />}/>
+      <Route path='/teacher' element={<Teacher />}/>
       <Route path='/user' element={<User firstname={'John'} lastname={'Smith'} isTeacher={'true'}/>}/>
       <Route path='/testPage' element={<TestPage/>}/>
       <Route path='/test1' element={<TestOne/>}/>

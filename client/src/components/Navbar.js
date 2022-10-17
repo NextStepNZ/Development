@@ -15,6 +15,9 @@ const Navbar = () => {
                         <Link to="/devcontrols">Dev Controls</Link>
                     </li>
                     <li>
+                        <Link to="/teacher">Teacher</Link>
+                    </li>
+                    <li>
                         <Link to="/user">User</Link>
                     </li>
                     <li>
