@@ -1,11 +1,32 @@
-Run this in MySQL to set up current database set up 
+# NEXTSTEP
 
-CREATE SCHEMA `nextstepnz` ;
+  NextStep is a resource built to help both students and teachers directly when it comes to learning and testing. NextStep is aimed at creating the perfect quiz platform to help those who want to learn.
 
-CREATE TABLE `nextstepnz`.`logindetails` (
-  `idloginDetails` INT NOT NULL AUTO_INCREMENT,
-  `userName` TEXT(255) NOT NULL,
-  `password` TEXT(255) NOT NULL,
-  PRIMARY KEY (`idloginDetails`));
+## Disclaimer
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+  This is a project for the Auckland University of Technology Software Development Practice class. 
+
+## Useage
+
+  ```bash
+  Open two different terminals and do the following 
+
+  CLIENT SIDE
+    cd ./client
+    npm start
+
+  SERVER SIDE
+    cd ./server 
+    node index.js
+  ```
+
+## Dev Team
+
+  Corban M 
+  Salman A
+  Chris C
+  Henri Q 
+
+## License
+
+  [AUT](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
