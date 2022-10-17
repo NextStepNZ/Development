@@ -22,10 +22,10 @@
 
 ## Dev Team
 
-  Corban M __
-  Salman A
-  Chris C
-  Henri Q 
+  Corban M |
+  Salman A |
+  Chris C |
+  Henri Q  |
 
 ## License
 
