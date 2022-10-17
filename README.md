@@ -22,7 +22,7 @@
 
 ## Dev Team
 
-  Corban M <br\>
+  Corban M __
   Salman A
   Chris C
   Henri Q 
