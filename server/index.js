@@ -338,7 +338,7 @@ app.post("/searchStudent", (req, res) => {
 // Timer Interface ========================================================
 app.get('/getTime', (req, res) => {
     var quizID = req.body.quizID;
-    db.query("SELECT * FROM quizzes", (err, result) => {
+    db.query("SELECT * FROM quizzes WHERE id = ?", [quizID],(err, result) => {
         if (err) {
             console.log(err);
         } else {
