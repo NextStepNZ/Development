@@ -199,7 +199,7 @@ app.post("/addNewQuiz", (req, res) => {
 
     db.query(
         "INSERT INTO quizzes (id, name) VALUES (?,?)",
-        [qID,qName],
+        [qID, qName],
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -287,7 +287,7 @@ app.post("/searchStudent", (req, res) => {
 
     console.log(fName);
     console.log(lName);
-    
+
     if (fName && lName) {
         fName = '%' + fName + '%';
         lName = '%' + lName + '%';
@@ -335,4 +335,15 @@ app.post("/searchStudent", (req, res) => {
 
 });
 
-
+// Timer Interface ========================================================
+app.get('/getTime', (req, res) => {
+    var quizID = req.body.quizID;
+    db.query("SELECT * FROM quizzes", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Sucess")
+            res.send(result);
+        }
+    })
+})
