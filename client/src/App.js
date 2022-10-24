@@ -7,23 +7,16 @@ import TestPage from "./components/TestPage";
 import TestOne from "./components/Test1";
 import TestTwo from "./components/Test2";
 import TestThree from "./components/Test3";
-<<<<<<< Updated upstream
-=======
 import TestNine from "./components/Test9";
 import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import Teacher from "./components/Teacher";
-import Footer from './components/Footer';
-import {ThemeProvider} from "styled-components";
+import Footer from "./components/Footer";
 import { GlobalStyles } from "./components/Themes/GlobalStyles";
-import { lightTheme, darkTheme } from "./components/Themes/Themes"
-import {useState} from 'react';
->>>>>>> Stashed changes
-import TestNine from "./components/Test9";
-import Login from "./components/Login/Login";
-import Register from "./components/Login/Register";
-import Teacher from "./components/Teacher";
-
+import { lightTheme } from "./components/Themes/Themes";
+import { darkTheme } from "./components/Themes/Themes";
+import { ThemeProvider } from "styled-components";
+import { useState } from "react";
 import {Routes, Route} from 'react-router-dom';
 
 
