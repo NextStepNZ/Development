@@ -4,7 +4,7 @@
 * {
   margin: 0;
   font-family: "Quicksand";
-  color: #333;
+
 }
 .navbar {
   padding: 20px;
@@ -41,4 +41,8 @@ footer {
   right: 0;
   padding: 8px;
   text-align: left;
+}
+
+button {
+  float: right;
 }

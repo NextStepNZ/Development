@@ -12,19 +12,11 @@ import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import Teacher from "./components/Teacher";
 import Footer from "./components/Footer";
-import { GlobalStyles } from "./components/Themes/GlobalStyles";
-import { lightTheme } from "./components/Themes/Themes";
-import { darkTheme } from "./components/Themes/Themes";
-import { ThemeProvider } from "styled-components";
-import { useState } from "react";
 import {Routes, Route} from 'react-router-dom';
 
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-}
+
   return (
     <>
     <Navbar />
@@ -42,12 +34,6 @@ const App = () => {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
     </Routes>
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-      <GlobalStyles/>
-      <button onClick={themeToggler}>Switch Theme</button>
-      </>
-    </ThemeProvider>
     </>
     );
 }
