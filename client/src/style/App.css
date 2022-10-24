@@ -5,9 +5,9 @@
 /*
 Just made the whole page grey so my eyes dont hurt at 3am - Salman
 */
-html {
+/* html {
   background-color: #DEF2F1;
-}
+} */
 
 .loginComponents {
   display: flex;
@@ -67,9 +67,9 @@ button:hover {
   margin-top: 2px;
   margin-bottom: 2px;
 }
-h1{
+/* h1{
   color: #17252A;
-}
-p{
+} */
+/* p{
   color: #17252A;
-}
+} */
