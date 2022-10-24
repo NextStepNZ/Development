@@ -336,13 +336,21 @@ app.post("/searchStudent", (req, res) => {
 });
 
 // Timer Interface ========================================================
-app.get('/getTime', (req, res) => {
-    var quizID = req.body.quizID;
-    db.query("SELECT * FROM quizzes WHERE id = ?", [quizID],(err, result) => {
+app.get('/getTime100', (req, res) => {
+    //const quizID = req.query.quizID ?? '';
+    var quizID = 100;
+   const sqlGet = "SELECT * FROM quizzes WHERE id = ?";
+    console.log(req.query+"req console log");
+
+    db.query(sqlGet, 
+        [quizID], 
+        (err, result) => {
         if (err) {
             console.log(err);
+            console.log(quizID+" NumberId")
         } else {
-            console.log("Sucess")
+            console.log("sucess")
+            console.log(quizID+" NumberId")
             res.send(result);
         }
     })

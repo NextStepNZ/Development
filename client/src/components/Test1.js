@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Timer from "./Timer";
 
 function Test1() {
 	const questionList = [
@@ -24,7 +25,7 @@ function Test1() {
 			answers: [
 				{ answer: 'Decimal', correctOrNot: false },
 				{ answer: 'Binary', correctOrNot: false },
-				{ answer: 'Hexadecimal', correctOrNot: true},
+				{ answer: 'Hexadecimal', correctOrNot: true },
 
 			],
 		},
@@ -40,6 +41,11 @@ function Test1() {
 
 	const [Question, setQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	useEffect(() => {
+		setInterval(() => {
+			setShowScore(true);
+		}, timerendPersecond)
+	}, []);
 	const [score, setScore] = useState(0);
 
 	const AnswerClick = (isCorrect) => {
@@ -54,6 +60,11 @@ function Test1() {
 			setShowScore(true);
 		}
 	};
+
+	const timerend = 100;
+	const timerendPersecond = timerend * 1000;
+	const timer = useState(<Timer max={timerend} />);
+
 	return (
 		<div className='test'>
 			{showScore ? (
@@ -62,6 +73,7 @@ function Test1() {
 				</div>
 			) : (
 				<>
+					<h3>Timer:</h3><div><h3>{timer}</h3></div>
 					<div className='question-section'>
 						<div className='question-count'>
 							<span>Question {Question + 1}</span>/{questionList.length}

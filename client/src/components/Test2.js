@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Timer from "./Timer";
 
 function Test2() {
 	const questionList = [
@@ -16,7 +17,7 @@ function Test2() {
 				{ answer: 'Tag for an image', correctOrNot: true },
 				{ answer: 'Tag for the page title', correctOrNot: false },
 				{ answer: 'Tag for bold text', correctOrNot: false },
-				
+
 			],
 		},
 		{
@@ -24,7 +25,7 @@ function Test2() {
 			answers: [
 				{ answer: 'Tag to embed CSS into HTML', correctOrNot: false },
 				{ answer: 'Contains all the content of a page', correctOrNot: true },
-				{ answer: 'Contains most of the unseen information', correctOrNot: false},
+				{ answer: 'Contains most of the unseen information', correctOrNot: false },
 
 			],
 		},
@@ -41,13 +42,17 @@ function Test2() {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	useEffect(() => {
+		setInterval(() => {
+			setShowScore(true);
+		}, timerendPersecond)
+	}, []);
 	const [score, setScore] = useState(0);
 
 	const AnswerClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
-
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questionList.length) {
 			setCurrentQuestion(nextQuestion);
@@ -55,6 +60,12 @@ function Test2() {
 			setShowScore(true);
 		}
 	};
+
+	
+	const timerend = 100;
+	const timerendPersecond = timerend * 1000;
+	const timer = useState(<Timer max={timerend} />);
+
 	return (
 		<div className='test'>
 			{showScore ? (
@@ -63,6 +74,7 @@ function Test2() {
 				</div>
 			) : (
 				<>
+				<h3>Timer:</h3><div><h3>{timer}</h3></div>
 					<div className='question-section'>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questionList.length}
