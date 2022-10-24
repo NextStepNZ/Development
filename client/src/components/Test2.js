@@ -1,38 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Timer from "./Timer";
 
-function Test1() {
-	const questions = [
+function Test2() {
+	const questionList = [
 		{
-			questionText: ' ',
-			answerOptions: [
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: false },
-
+			question: 'What is <div>?',
+			answers: [
+				{ answer: 'Tag for a paragraph', correctOrNot: false },
+				{ answer: 'Tag for a box', correctOrNot: true },
+				{ answer: 'Tag for a link', correctOrNot: false },
 			],
 		},
 		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: true },
-			],
-		},
-		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: false },
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: true},
+			question: 'What is <img>?',
+			answers: [
+				{ answer: 'Tag for an image', correctOrNot: true },
+				{ answer: 'Tag for the page title', correctOrNot: false },
+				{ answer: 'Tag for bold text', correctOrNot: false },
 
 			],
 		},
 		{
-			questionText: '',
-			answerOptions: [
-				{ answerText: '', isCorrect: true },
-				{ answerText: '', isCorrect: false },
+			question: 'What is <body>?',
+			answers: [
+				{ answer: 'Tag to embed CSS into HTML', correctOrNot: false },
+				{ answer: 'Contains all the content of a page', correctOrNot: true },
+				{ answer: 'Contains most of the unseen information', correctOrNot: false },
+
+			],
+		},
+		{
+			question: 'What is <!DOCTYPE>?',
+			answers: [
+				{ answer: 'Tag for an unordered list', correctOrNot: false },
+				{ answer: 'Tag for a line break (enter)', correctOrNot: false },
+				{ answer: 'Tag to identify the type of document', correctOrNot: true },
 
 			],
 		},
@@ -40,37 +42,48 @@ function Test1() {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	useEffect(() => {
+		setInterval(() => {
+			setShowScore(true);
+		}, timerendPersecond)
+	}, []);
 	const [score, setScore] = useState(0);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const AnswerClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
-
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < questionList.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
 	};
+
+	
+	const timerend = 100;
+	const timerendPersecond = timerend * 1000;
+	const timer = useState(<Timer max={timerend} />);
+
 	return (
-		<div className='app'>
+		<div className='test'>
 			{showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {score} out of {questionList.length}
 				</div>
 			) : (
 				<>
+				<h3>Timer:</h3><div><h3>{timer}</h3></div>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{questionList.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questionList[currentQuestion].question}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						{questionList[currentQuestion].answers.map((answerOption) => (
+							<button onClick={() => AnswerClick(answerOption.correctOrNot)}>{answerOption.answer}</button>
 						))}
 					</div>
 				</>
@@ -78,4 +91,4 @@ function Test1() {
 		</div>
 	);
 }
-export default Test1;
+export default Test2;

@@ -1,76 +1,88 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Timer from "./Timer";
 
 function Test1() {
-	const questions = [
+	const questionList = [
 		{
-			questionText: 'C is a: ',
-			answerOptions: [
-				{ answerText: 'General-purpose programming language', isCorrect: true },
-				{ answerText: 'Photo editing program', isCorrect: false },
-				{ answerText: 'Client-side scripting language', isCorrect: false },
+			question: 'C is a: ',
+			answers: [
+				{ answer: 'General-purpose programming language', correctOrNot: true },
+				{ answer: 'Photo editing program', correctOrNot: false },
+				{ answer: 'Client-side scripting language', correctOrNot: false },
 
 			],
 		},
 		{
-			questionText: 'Which of the following are valid data types in C??',
-			answerOptions: [
-				{ answerText: 'int, double, char, boolean', isCorrect: false },
-				{ answerText: 'int, bool, string', isCorrect: false },
-				{ answerText: 'int, float, double, char', isCorrect: true },
+			question: 'Which of the following are valid data types in C?',
+			answers: [
+				{ answer: 'int, double, char, boolean', correctOrNot: false },
+				{ answer: 'int, bool, string', correctOrNot: false },
+				{ answer: 'int, float, double, char', correctOrNot: true },
 			],
 		},
 		{
-			questionText: 'What does a leading 0x or 0X means??',
-			answerOptions: [
-				{ answerText: 'Decimal', isCorrect: false },
-				{ answerText: 'Binary', isCorrect: true },
-				{ answerText: 'Hexadecimal', isCorrect: true},
+			question: 'What does a leading 0x or 0X means?',
+			answers: [
+				{ answer: 'Decimal', correctOrNot: false },
+				{ answer: 'Binary', correctOrNot: false },
+				{ answer: 'Hexadecimal', correctOrNot: true },
 
 			],
 		},
 		{
-			questionText: 'C does not have a boolean type.?',
-			answerOptions: [
-				{ answerText: 'True', isCorrect: true },
-				{ answerText: 'False', isCorrect: false },
+			question: 'C does not have a boolean type?',
+			answers: [
+				{ answer: 'True', correctOrNot: true },
+				{ answer: 'False', correctOrNot: false },
 
 			],
 		},
 	];
 
-	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [Question, setQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	useEffect(() => {
+		setInterval(() => {
+			setShowScore(true);
+		}, timerendPersecond)
+	}, []);
 	const [score, setScore] = useState(0);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const AnswerClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
+		const nextQuestion = Question + 1;
+		if (nextQuestion < questionList.length) {
+			setQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
 	};
+
+	const timerend = 100;
+	const timerendPersecond = timerend * 1000;
+	const timer = useState(<Timer max={timerend} />);
+
 	return (
-		<div className='app'>
+		<div className='test'>
 			{showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {score} out of {questionList.length}
 				</div>
 			) : (
 				<>
+					<h3>Timer:</h3><div><h3>{timer}</h3></div>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {Question + 1}</span>/{questionList.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questionList[Question].question}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						{questionList[Question].answers.map((answerOption) => (
+							<button onClick={() => AnswerClick(answerOption.correctOrNot)}>{answerOption.answer}</button>
 						))}
 					</div>
 				</>
