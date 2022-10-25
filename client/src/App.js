@@ -18,7 +18,7 @@ import {Routes, Route} from 'react-router-dom';
 const App = () => {
 
   return (
-    <>
+    <div> 
     <Navbar />
     <Footer />
     <Routes> 
@@ -34,7 +34,7 @@ const App = () => {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
     </Routes>
-    </>
+    </div> 
     );
 }
 

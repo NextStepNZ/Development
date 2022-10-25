@@ -25,7 +25,7 @@ function Teacher() {
     }
 
     return (
-        <>
+        <div>
             <div className="App">
 
                 <Typography variant="h2" gutterBottom>
@@ -97,7 +97,7 @@ function Teacher() {
                     </Table>
                 </TableContainer>
             </div>
-        </>
+        </div>
     );
 }
 
