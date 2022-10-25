@@ -75,7 +75,7 @@ function Test3() {
 					You scored {score} out of {questionList.length}
 				</div>
 			) : (
-				<>
+				<div>
 					<h3>Timer:</h3><div><h3>{timer}</h3></div>
 					<div className='question-section'>
 						<div className='question-count'>
@@ -88,7 +88,7 @@ function Test3() {
 							<button onClick={() => AnswerClick(answerOption.correctOrNot)}>{answerOption.answer}</button>
 						))}
 					</div>
-				</>
+				</div>
 			)}
 		</div>
 	);

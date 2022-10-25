@@ -13,13 +13,13 @@ const Footer = () => {
         theme === 'light' ? setTheme('dark') : setTheme('light')
     }
 
-    return <footer>{`Copyright © NextStep ${year}`}  
+    return <footer>{`Copyright © NextStep ${year}`}
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-      <GlobalStyles/>
-      <button class="themeButton" onClick={themeToggler}>Switch Theme</button>
-      </>
-    </ThemeProvider>
+            <div>
+                <GlobalStyles />
+                <button class="themeButton" onClick={themeToggler}>Switch Theme</button>
+            </div>
+        </ThemeProvider>
     </footer>;
 
 };

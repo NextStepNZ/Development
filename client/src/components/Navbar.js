@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <>
+        <div>
             <nav className="nav">
                 <h1 className="nav-title">NextStep</h1>
                 <ul>
@@ -31,7 +31,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
-        </>
+        </div>
     );
 }
 export default Navbar;
