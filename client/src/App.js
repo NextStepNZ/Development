@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import DevControls from "./components/DevControls";
-import User from './components/User';
 import TestPage from "./components/TestPage";
 import TestOne from "./components/Test1";
 import TestTwo from "./components/Test2";
@@ -25,7 +24,6 @@ const App = () => {
       <Route path='/' element={<Home />}/>
       <Route path='/devcontrols' element={<DevControls />}/>
       <Route path='/teacher' element={<Teacher />}/>
-      <Route path='/user' element={<User firstname={'John'} lastname={'Smith'} isTeacher={'true'}/>}/>
       <Route path='/testPage' element={<TestPage/>}/>
       <Route path='/test1' element={<TestOne/>}/>
       <Route path='/test2' element={<TestTwo/>}/>
