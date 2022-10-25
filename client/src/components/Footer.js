@@ -6,9 +6,6 @@ import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 
 
-
-
-
 const Footer = () => {
     const year = new Date().getFullYear();
     const [theme, setTheme] = useState('light');
