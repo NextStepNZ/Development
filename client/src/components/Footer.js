@@ -1,11 +1,10 @@
 import React from "react";
-import { Component } from "react";
 import { GlobalStyles } from "./Themes/GlobalStyles";
 import { lightTheme } from "./Themes/Themes";
 import { darkTheme } from "./Themes/Themes";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
-import themeToggler from "../App";
+
 
 
 
