@@ -12,7 +12,7 @@ function Home() {
             results of the students in their respective classes. <n/>
             Students who are proud of what they've learnt and their scores
             that they have achieved will be able to purchase cosmetic items
-            for their avatars with points earned from completing quizes
+            for their avatars with points earned from completing quiz's
         </p1>
 
     </body>
