@@ -287,8 +287,9 @@ app.post("/searchStudent", (req, res) => {
 
     console.log(fName);
     console.log(lName);
-
+    
     if (fName && lName) {
+        console.log("Both");
         fName = '%' + fName + '%';
         lName = '%' + lName + '%';
         db.query(
@@ -302,8 +303,9 @@ app.post("/searchStudent", (req, res) => {
                     res.send(result);
                 }
             }
-        )
-    } else if (fName) {
+            )
+        } else if (fName) {
+        console.log("First Name");
         fName = '%' + fName + '%';
         db.query(
             "SELECT * FROM userprofiles WHERE FirstName LIKE ?",
@@ -316,9 +318,10 @@ app.post("/searchStudent", (req, res) => {
                     res.send(result);
                 }
             }
-        )
-    } else if (lName) {
-        lName = '%' + lName + '%';
+            )
+        } else if (lName) {
+            console.log("Last Name");
+            lName = '%' + lName + '%';
         db.query(
             "SELECT * FROM userprofiles WHERE LastName LIKE ?",
             [lName],
